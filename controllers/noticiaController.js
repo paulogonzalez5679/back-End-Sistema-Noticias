@@ -2,8 +2,8 @@ const axios = require("axios");
 const noticia = require("../models/noticia");
 let respuesta;
 
+//Obtenemos la informacion Json de la api y almacenamos en la base de datos
 exports.createNoticia = (req, res) => {
-
     axios.get('https://hn.algolia.com/api/v1/search_by_date?query=nodejs').then(resp => {
         respuesta = (resp.data.hits)
         res.send(respuesta);
@@ -24,12 +24,9 @@ exports.createNoticia = (req, res) => {
                     story_url: x.story_url,
                     parent_id: x.parent_id,
                     created_at_i: x.created_at_i
-
                 })
                 noticias.save();
-                console.log(x.author);
             }
-
         } catch (error) {
             console.log(error);
         }
@@ -38,4 +35,13 @@ exports.createNoticia = (req, res) => {
 
 
 
+}
+
+exports.getNoticias = async(req, res) => {
+    try {
+        const noticias = await noticia.find();
+        res.json(noticias)
+    } catch (error) {
+        console.log(error);
+    }
 }

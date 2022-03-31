@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 const noticiaController = require("../controllers/noticiaController")
 
-
-
-
-
+//almacena el Json de la API
 router.post('/', noticiaController.createNoticia);
-
+//obtiene la informacion de la Base de datos 
+router.get('/', noticiaController.getNoticias);
 module.exports = router
 
 
