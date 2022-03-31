@@ -45,3 +45,16 @@ exports.getNoticias = async(req, res) => {
         console.log(error);
     }
 }
+exports.eliminarNoticia = async(req, res) => {
+    try {
+        let noticias = await noticia.findById(req.params.id);
+        if (!noticias) {
+            res.status(400).json({ msg: 'no existe la noticia' })
+        }
+        await noticia.findByIdAndRemove({ _id: req.params.id })
+        res.json({ msg: 'eliminado con exito' });
+    } catch (error) {
+        res.status(500).json({ msg: 'error' })
+        console.log(error);
+    }
+}

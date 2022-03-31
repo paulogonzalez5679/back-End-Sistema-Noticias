@@ -6,6 +6,8 @@ const noticiaController = require("../controllers/noticiaController")
 router.post('/', noticiaController.createNoticia);
 //obtiene la informacion de la Base de datos 
 router.get('/', noticiaController.getNoticias);
+//elimina una noticia
+router.delete('/:id', noticiaController.eliminarNoticia);
 module.exports = router
 
 
