@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 const noticiaController = require("../controllers/noticiaController")
 
-//almacena el Json de la API
-router.post('/', noticiaController.createNoticia);
+/*almacena el Json de la API, se comenta esta línea ya que ya fueron obtenidas todas las noticias
+y almacenadas en la base de datos*/
+
+//router.post('/', noticiaController.createNoticia);
+
 //obtiene la informacion de la Base de datos 
 router.get('/', noticiaController.getNoticias);
 //elimina una noticia
