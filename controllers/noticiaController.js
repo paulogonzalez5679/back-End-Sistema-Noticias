@@ -38,8 +38,10 @@ exports.createNoticia = (req, res) => {
 }
 
 exports.getNoticias = async(req, res) => {
+    const query = {};
+    const sort = { created_at: -1 };
     try {
-        const noticias = await noticia.find();
+        const noticias = await noticia.find(query).sort(sort);
         res.json(noticias)
     } catch (error) {
         console.log(error);
